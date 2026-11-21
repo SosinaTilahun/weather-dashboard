@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Async Weather Dashboard</title>
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <header class="top">
+      <div>
+        <h1>Weather Dashboard</h1>
+        <p class="sub">Async JavaScript demo: retries, cancellation, parallel requests and a 2-slot request queue.</p>
+      </div>
+      <div class="meter" aria-label="Request queue status">
+        <span class="meter-label">Queue</span>
+        <span id="queue-slots" class="slots" aria-hidden="true"></span>
+        <span id="queue-text" class="meter-text">idle</span>
+      </div>
+    </header>
+
+    <main>
+      <section class="panel controls" aria-label="Search">
+        <form id="search-form" autocomplete="off">
+          <label for="city">City</label>
+          <div class="row">
+            <input id="city" name="city" type="text" placeholder="e.g. Addis Ababa" value="Addis Ababa" required />
+            <button id="search-btn" type="submit" class="primary">Get weather</button>
+            <button id="cancel-btn" type="button" class="ghost" disabled>Cancel</button>
+          </div>
+        </form>
+
+        <div class="row demo">
+          <label for="mode">Network simulation</label>
+          <select id="mode"></select>
+          <button id="cities-btn" type="button" class="ghost">Compare 6 cities (queue demo)</button>
+        </div>
+      </section>
+
+      <div id="status" class="status idle" role="status" aria-live="polite">Search for a city to begin.</div>
+
+      <section id="dashboard" class="grid" hidden>
+        <article class="panel current" id="current"></article>
+        <article class="panel forecast" id="forecast"></article>
+      </section>
+
+      <section id="cities-section" class="panel" hidden>
+        <h2>Current weather in six cities</h2>
+        <div id="cities" class="cities"></div>
+      </section>
+
+      <section class="panel log-panel">
+        <div class="log-head">
+          <h2>Request log</h2>
+          <button id="clear-log" type="button" class="ghost small">Clear</button>
+        </div>
+        <ol id="log" class="log" aria-live="off"></ol>
+      </section>
+    </main>
+
+    <script type="module" src="js/main.js"></script>
+  </body>
+</html>
